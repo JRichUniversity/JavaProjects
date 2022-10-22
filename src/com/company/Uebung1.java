@@ -22,6 +22,6 @@ public class Uebung1 {
     }
 
     static String repeatChar(String str, int var){
-        return String.valueOf(str).repeat(Math.max(0, var));
+        return String.valueOf(str).repeat(var);
     }
 }
