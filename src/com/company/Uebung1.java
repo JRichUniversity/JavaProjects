@@ -4,26 +4,24 @@ public class Uebung1 {
 
     static String SPACE = " ";
     static String STAR = "*";
+    static int SIZE = 3;
+    static int WIDTH = 9;
 
     public static void main(String[] args){
         printStar();
     }
 
     static void printStar(){
-        System.out.println(SPACE + STAR + repeatChar(SPACE, 5) + STAR + SPACE);
-        System.out.println(repeatChar(SPACE, 2) + STAR + repeatChar(SPACE, 3) + STAR + repeatChar(SPACE, 2));
-        System.out.println(repeatChar(SPACE, 3) + STAR + SPACE + STAR + repeatChar(SPACE, 3));
-        System.out.println(repeatChar(STAR, 9));
-        System.out.println(repeatChar(SPACE, 3) + STAR + SPACE + STAR + repeatChar(SPACE, 3));
-        System.out.println(repeatChar(SPACE, 2) + STAR + repeatChar(SPACE, 3) + STAR + repeatChar(SPACE, 2));
-        System.out.println(SPACE + STAR + repeatChar(SPACE, 5) + STAR + SPACE);
+        for(int i = -SIZE; i <= SIZE;i++){
+            if(i == 0){
+                System.out.println(repeatChar(STAR, WIDTH));
+            } else {
+                System.out.println(repeatChar(SPACE, SIZE - Math.abs(i) + 1) + STAR + repeatChar(SPACE, WIDTH - 2 - (2 * (SIZE - Math.abs(i) + 1))) + STAR);
+            }
+        }
     }
 
-    static String repeatChar(String character, int amount){
-        String newString = "";
-        for(int i = 0; i < amount; i++){
-            newString = newString + character;
-        }
-        return newString;
+    static String repeatChar(String str, int var){
+        return String.valueOf(str).repeat(Math.max(0, var));
     }
 }

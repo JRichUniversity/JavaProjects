@@ -5,10 +5,19 @@ import java.util.regex.Matcher;
 import java.util.*;
 import static jsTools.Input.*;
 
+/**
+ * Uebung2.java
+ *
+ * @author Jakob Reichle
+ */
 public class Uebung2 {
 
+    /**
+     * Solutions for the programming I internship.
+     */
+
     static String[] DAYS = {"Sunday", "Monday", "Thursday", "Wednesday", "Thursday", "Friday", "Saturday"};
-    static Map<String, Integer> DICTIONARY = new HashMap<String, Integer>(){{
+    static Map<String, Integer> DICTIONARY = new HashMap<>(){{ //HashMap dictionary for matching months with their corresponding numbers.
         put("January", 13);
         put("February", 14);
         put("March", 3);
@@ -40,48 +49,46 @@ public class Uebung2 {
 
     /**
      * Menu for handling all program operations
-     * @param var
      */
     public static void handler(int var) {
         System.out.println();
-        switch (var){
-            case 1:
+        switch (var) {
+            case 1 -> {
                 System.out.println("Please choose a date with the following format - DD.Month YYYY");
                 String DATE = readLine("Please enter a date: ");
-                if(isValid(DATE)){
+                if (isValid(DATE)) {
                     dayOfTheWeek(convertDays(DATE));
                 } else {
                     System.out.println("Illegal format of date.");
                 }
                 handler(6);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 int x = readInt("Please enter a Number: ");
                 System.out.println("\n!" + x + " = " + faculty(x));
                 handler(6);
-                break;
-            case 3:
+            }
+            case 3 -> {
                 squareNumbers();
                 handler(6);
-                break;
-            case 4:
+            }
+            case 4 -> {
                 printForm();
                 handler(6);
-                break;
-            case 5:
+            }
+            case 5 -> {
                 multiplications();
                 handler(6);
-                break;
-            case 6:
+            }
+            case 6 -> {
                 String next = readLine("\nWould you like to continue?(y/n): ");
-                if(next.equals("y")){
+                if (next.equals("y")) {
                     start();
                 } else {
                     System.out.println("Goodbye!");
                 }
-                break;
-            default:
-                System.out.println("Error");
+            }
+            default -> System.out.println("Error");
         }
     }
 
@@ -104,8 +111,7 @@ public class Uebung2 {
             String[] result = date.split("[. ]");
             String[] cent = result[2].split("(?<=\\G.{2})");
             int month = DICTIONARY.get(result[1]), day = Integer.parseInt(result[0]), century = Integer.parseInt(cent[0]), year = Integer.parseInt(cent[1]);
-            int[] arr = {day, month, year, century};
-            return arr;
+        return new int[]{day, month, year, century};
     }
 
     /**
@@ -115,7 +121,7 @@ public class Uebung2 {
      */
     public static boolean isValid(String str){
         String[] result = str.split("[. ]");
-        String re = "\\d{2}.\\w+\\s\\d{4}";
+        String re = "\\d+.\\w+\\s\\d{4}";
         Pattern pt = Pattern.compile(re);
         Matcher mt = pt.matcher(str);
         return mt.matches() && (DICTIONARY.get(result[1]) != null);
@@ -163,18 +169,11 @@ public class Uebung2 {
             return;
         }
         System.out.println();
-        switch (mode){
-            case 1:
-                drawSquare(x, y);
-                break;
-            case 2:
-                drawTriangle(y);
-                break;
-            case 3:
-                drawTurnedSquare(x);
-                break;
-            default:
-                System.out.println("Unknown shape ID");
+        switch (mode) {
+            case 1 -> drawSquare(x, y);
+            case 2 -> drawTriangle(y);
+            case 3 -> drawTurnedSquare(x);
+            default -> System.out.println("Unknown shape ID");
         }
 
     }
@@ -187,28 +186,26 @@ public class Uebung2 {
     public static int[] chooseMethod(int method){
         System.out.println();
         int[] answer = new int[2];
-        switch (method){
-            case 1:
-                String size = readLine("Please enter the size (x, y): ");
+        switch (method) {
+            case 1 -> {
+                String size = readLine("Please enter the size of the square (x,y): ");
                 String[] result = size.split(",");
                 answer[0] = Integer.parseInt(result[0]);
                 answer[1] = Integer.parseInt(result[1]);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 String sizeTriangle = readLine("Please enter the height of the triangle: ");
                 String[] resultTriangle = sizeTriangle.split(",");
                 answer[0] = Integer.parseInt(resultTriangle[0]);
                 answer[1] = Integer.parseInt(resultTriangle[0]);
-                break;
-            case 3:
+            }
+            case 3 -> {
                 String sizeRotatedSquare = readLine("Please enter the height of the square: ");
                 String[] resultRotated = sizeRotatedSquare.split(",");
                 answer[0] = Integer.parseInt(resultRotated[0]);
                 answer[1] = Integer.parseInt(resultRotated[0]);
-                break;
-            default:
-                System.out.println("Invalid action");
-                break;
+            }
+            default -> System.out.println("Invalid action");
         }
         return answer;
     }
@@ -224,7 +221,7 @@ public class Uebung2 {
             if (Math.abs(i) == height) {
                 System.out.println(multiplyChar(SPACE, Math.abs(i)) + STAR);
             } else if (i == 0) {
-                System.out.println(multiplyChar(SPACE, Math.abs(i)) + STAR + "\t" + multiplyChar(SPACE, width-2) +  STAR);
+                System.out.println(multiplyChar(SPACE, 0) + STAR + "\t" + multiplyChar(SPACE, width-2) +  STAR);
             }
             else {
                 System.out.println(multiplyChar(SPACE, Math.abs(i)) + STAR + "\t" + multiplyChar(SPACE, width - (2 + 2 * Math.abs(i))) +  STAR);
@@ -238,15 +235,14 @@ public class Uebung2 {
      */
     public static void drawTriangle(int relativeY){
         int x = (2*relativeY)-1;
-        int y = relativeY;
-        for(int i = 1; i <= y; i++){
+        for(int i = 1; i <= relativeY; i++){
             if(i == 1){
-                System.out.println(multiplyChar(SPACE, y - i) + STAR);
-            } else if (i == y){
+                System.out.println(multiplyChar(SPACE, relativeY - i) + STAR);
+            } else if (i == relativeY){
                 System.out.println(multiplyChar(STAR, x));
             }
             else{
-                System.out.println(multiplyChar(SPACE, y - i) + STAR + "\t" + multiplyChar(SPACE, x - 2 - (2 * (y - i))) + STAR);
+                System.out.println(multiplyChar(SPACE, relativeY - i) + STAR + "\t" + multiplyChar(SPACE, x - 2 - (2 * (relativeY - i))) + STAR);
             }
         }
     }
@@ -274,11 +270,11 @@ public class Uebung2 {
      * @return Combined String
      */
     public static String multiplyChar(String str, int num){
-        String newStr = "";
+        StringBuilder newStr = new StringBuilder();
         for(int i = 0; i < num; i++){
-            newStr = newStr + str + "\t";
+            newStr.append(str).append("\t");
         }
-        return newStr;
+        return newStr.toString();
     }
 
     /**
@@ -321,7 +317,7 @@ public class Uebung2 {
 
     /**
      * Prints a formatted line for a table
-     * @param vars
+     * @param vars list of all numbers that will be printed and their iteration index
      */
     public static void printLine(int[] vars){
         System.out.print("\n" + vars[0]);
