@@ -14,7 +14,7 @@ public class Uebung1 {
     static void printStar(){
         for(int i = -SIZE; i <= SIZE;i++){
             if(i == 0){
-                System.out.println(repeatChar(STAR, WIDTH));
+                System.out.println(repeatChar(SPACE, WIDTH/2) + STAR);
             } else {
                 System.out.println(repeatChar(SPACE, SIZE - Math.abs(i) + 1) + STAR + repeatChar(SPACE, WIDTH - 2 - (2 * (SIZE - Math.abs(i) + 1))) + STAR);
             }
