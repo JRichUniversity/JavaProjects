@@ -43,7 +43,7 @@ public class Uebung2 {
      * Method used for initialising and restarting the selection menu
      */
     public static void start(){
-        System.out.println("What action would you like to perform?\n\n1 - Weekday calculation\n2 - Faculty of a given number\n3 - Table of square numbers\n4 - Draw a form\n5 - Multiplication Table\n6 - Exit\n");
+        System.out.println("What action would you like to perform?\n\n1 - Weekday calculation\n2 - Faculty of a given number\n3 - Table of square numbers\n4 - Draw a form\n5 - Multiplication Table\n6 - Checksum\n7 - Exit\n");
         handler(readInt("Please enter a value: "));
     }
 
@@ -61,26 +61,32 @@ public class Uebung2 {
                 } else {
                     System.out.println("Illegal format of date.");
                 }
-                handler(6);
+                exitCase();
             }
             case 2 -> {
                 int x = readInt("Please enter a Number: ");
                 System.out.println("\n!" + x + " = " + faculty(x));
-                handler(6);
+                exitCase();
             }
             case 3 -> {
                 squareNumbers();
-                handler(6);
+                exitCase();
             }
             case 4 -> {
                 printForm();
-                handler(6);
+                exitCase();
             }
             case 5 -> {
                 multiplications();
-                handler(6);
+                exitCase();
             }
             case 6 -> {
+                int x = readInt("Please enter a number to checksum: ");
+                System.out.println();
+                checkSum(x);
+                exitCase();
+            }
+            case 7 -> {
                 String next = readLine("\nWould you like to continue?(y/n): ");
                 if (next.equals("y")) {
                     start();
@@ -90,6 +96,10 @@ public class Uebung2 {
             }
             default -> System.out.println("Error");
         }
+    }
+
+    public static void exitCase(){
+        handler(7);
     }
 
     /**
@@ -343,5 +353,19 @@ public class Uebung2 {
             System.out.print("----");
         }
         System.out.print("----|");
+    }
+
+    /**
+     * Method used to receive the checksum of a given number (1234 -> 10)
+     * @param num number to get the checksum of
+     */
+    public static void checkSum(int num){
+        String str = String.valueOf(num);
+        int sum = 0;
+        for(int j = 0; j < str.length(); j++){
+            int n = Integer.parseInt(Character.toString(str.charAt(j)));
+            sum = sum + n;
+        }
+        System.out.println("Checksum = " + sum);
     }
 }
