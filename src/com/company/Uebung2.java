@@ -87,7 +87,7 @@ public class Uebung2 {
                 exitCase();
             }
             case 7 -> {
-                String next = readLine("\nWould you like to continue?(y/n): ");
+                String next = readLine("\nWould you like to continue? (y/n): ");
                 if (next.equals("y")) {
                     start();
                 } else {
@@ -121,6 +121,9 @@ public class Uebung2 {
             String[] result = date.split("[. ]");
             String[] cent = result[2].split("(?<=\\G.{2})");
             int month = DICTIONARY.get(result[1]), day = Integer.parseInt(result[0]), century = Integer.parseInt(cent[0]), year = Integer.parseInt(cent[1]);
+            if(month == 13 || month == 14){
+                year--;
+            }
         return new int[]{day, month, year, century};
     }
 
