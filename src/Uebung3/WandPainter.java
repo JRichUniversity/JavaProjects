@@ -11,7 +11,7 @@ public class WandPainter {
     static String color = "black";
 
     public static void main(String[] args){
-        initWand(24);
+        initWand();
     }
 
     public static boolean paintHor(int x, int y, int len){
