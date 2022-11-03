@@ -1,12 +1,11 @@
 package Uebung3;
 import jsTools.Wand;
-
 import static jsTools.Wand.*;
 import java.util.Random;
 
 public class WandPainter {
 
-    Wand wand = new Wand();
+    static Wand wand = new Wand();
     static final int SPEED = 100;
     static String color = "black";
 
@@ -72,6 +71,14 @@ public class WandPainter {
         paintCounterDia(x, y + offset, size);
     }
 
+    public static void paintTri(int x, int y, int height){
+        int width = height*2-1;
+        int offset = (width-1)/2;
+        paintCounterDia(x-offset, y+height-1, offset+1);
+        paintDia(x,y,offset+1);
+        paintHor(x-offset, y+height-1, width);
+    }
+
 
     public static void changeColor(String newCol){
         color = newCol;
@@ -97,7 +104,7 @@ public class WandPainter {
 
     private static void paint(int x, int y){
         if(check(x) && check(y)){
-            randomColor();
+            //randomColor();
             setWandColor(y - 1, x - 1, color);
             paintWandNew();
             sleep(SPEED);
