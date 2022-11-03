@@ -11,6 +11,7 @@ public class WandPainter {
 
     public static void main(String[] args){
         initWand();
+        paintDiamond(5,10,6);
     }
 
     public static boolean paintHor(int x, int y, int len){
