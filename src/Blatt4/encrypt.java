@@ -1,5 +1,10 @@
 package Blatt4;
 
+/**
+ * Ceasar En/decrpytion
+ *
+ * @author Jakob Reichle
+ */
 public class encrypt {
     public static final String alphabet = "abcdefghijklmnopqrstuvwxyz";
     static String text = "HPC SLE KFPCDE OLD CLPEDPW RPWZPDE - PC DNSCPTMP XTC MTEEP PTYP XLTW";
