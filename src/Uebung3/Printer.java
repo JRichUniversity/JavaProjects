@@ -31,8 +31,10 @@ public class Printer {
     }
 
     public static void printlnWithIndentedStars(int indent, int count){
-        printWithIndentedStars(indent, count);
-        println("\n");
+        for (int i = 0; i < count;i++) {
+            printWithIndentedStars(indent, 1);
+            print("\n");
+        }
     }
 
     public static String genLineWithIndentedStars(int indent, int count){

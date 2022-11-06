@@ -4,14 +4,21 @@ import static jsTools.Input.readLine;
 
 public class TimeStamp {
     static final String[] singleTimes = {"null", "ein", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf"};
-
     static final String[] intervalTen = {"zwanzig", "dreißig", "vierzig", "fünfzig", "sechzig", "siebzig", "achtzig", "neunzig"};
+    static final String[] exceptions = {"sechzehn", "siebzehn"};
     static final String connector = "und";
 
     private static String interpret(int i){
         if(0 <= i  || i <= 99){
-            if(i <= 12) return singleTimes[i];
-            else if (i < 20) return singleTimes[i % 10] + singleTimes[10];
+            if(i == 1) return singleTimes[i]+"s";
+            else if(i != 1 && i <= 12) return singleTimes[i];
+            else if (i < 20){
+                if(i != 16 && i != 17){
+                    return singleTimes[i % 10] + singleTimes[10];
+                }
+                else if (i == 16) return exceptions[0];
+                else return exceptions[1];
+            }
             else if (i >= 20 && i % 10 == 0) return intervalTen[i / 10 - 2];
             else return singleTimes[i % 10] + connector + intervalTen[i / 10 - 2];
         }
