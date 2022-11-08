@@ -63,12 +63,12 @@ public class graphs {
     }
 
     public static String getRandomColor(int obj){
-        String currentColor = String.valueOf(getColor(obj));
-        System.out.println(currentColor);
-        String[] colors = {"cyan", "white", "pink", "yellow", "blue","green", "orange"};
+        Color currentColor = getColor(obj);
+        String[] colors = {"cyan", "pink", "yellow", "blue", "green", "orange"};
         Random random = new Random();
         int num = random.nextInt(colors.length);
-        if(currentColor.equals(colors[num])){
+        setColor(obj, colors[num]);
+        if(currentColor.equals(getColor(obj))){
             if(num == colors.length-1){
                 return colors[num-1];
             }
