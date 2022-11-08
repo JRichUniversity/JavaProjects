@@ -1,6 +1,8 @@
 package Blatt4;
 import javax.sound.midi.SysexMessage;
+import java.awt.*;
 import java.util.Random;
+import java.nio.file.Paths;
 
 import static jsTools.Graph.*;
 
@@ -10,13 +12,16 @@ public class graphs {
     static int dirY = randomNumber();
     static int[] bounds = {35, 690};
     static int radius = 30;
+    static int rect;
 
     public static void main(String[] args){
         int px = 10;
         int py = 500;
-        addRect(10, 10, 680, 680, "black");
-        int circle = addCircleBorder(px + 10, py , radius, "blue");
-        pong(circle, px + 10, py);
+        rect = addRect(10, 10, 680, 680, "white");
+        //int circle = addCircleBorder(px + 10, py , radius, "blue");
+        int picture = addPicture(px + 10, py, 50, 100,"C:\\Users\\jakob\\OneDrive\\Bilder\\Logo-DVD-Video.svg.png");
+        //pong(circle, px + 10, py);
+        pong(picture, px + 10, py);
         for(int i = 0; i < 10; i++){
             System.out.println(newRandomNum(1));
         }
@@ -42,12 +47,35 @@ public class graphs {
         while(inBounds(startX + radius) && inBounds(startY + radius)){
             int nextX = startX + radius + dirX;
             int nextY = startY + radius + dirY;
-            if(!inBounds(nextX)) dirX = newRandomNum(dirX) * -1;
-            else if(!inBounds(nextY)) dirY = newRandomNum(dirY) * -1;
+            if(!inBounds(nextX)) {
+                dirX = newRandomNum(dirX) * -1;
+                setColor(rect, getRandomColor(form));
+            }
+            else if(!inBounds(nextY)) {
+                dirY = newRandomNum(dirY) * -1;
+                setColor(rect, getRandomColor(form));
+            }
             moveElement(form, startX + dirX, startY + dirY);
             sleep(5);
             startX += dirX;
             startY += dirY;
+        }
+    }
+
+    public static String getRandomColor(int obj){
+        String currentColor = String.valueOf(getColor(obj));
+        System.out.println(currentColor);
+        String[] colors = {"cyan", "white", "pink", "yellow", "blue","green", "orange"};
+        Random random = new Random();
+        int num = random.nextInt(colors.length);
+        if(currentColor.equals(colors[num])){
+            if(num == colors.length-1){
+                return colors[num-1];
+            }
+            else return colors[num + 1];
+        }
+        else {
+            return colors[num];
         }
     }
 
