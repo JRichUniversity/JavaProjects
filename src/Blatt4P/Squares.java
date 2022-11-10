@@ -49,8 +49,8 @@ public class Squares {
         int hR1=150;
         addRect ( xR1 , yR1 , bR1 , hR1 ,"blue");
 
-        //moveRechteck( xR1 , bR1, yR1, hR1, 80 , 100);
-        //moveRechteck( xR1 , bR1 , yR1 , hR1, 160 , 100);
+        moveRechteck( xR1 , bR1, yR1, hR1, 80 , 100);
+        moveRechteck( xR1 , bR1 , yR1 , hR1, 160 , 100);
         moveRechteck( xR1 , bR1 , yR1 , hR1, 80 , 180);
         moveRechteck( xR1 , bR1 , yR1 , hR1, 160 , 180);
     }

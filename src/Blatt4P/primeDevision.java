@@ -2,7 +2,7 @@ package Blatt4P;
 import java.util.ArrayList;
 
 public class primeDevision {
-
+    //Git
     public static void main(String[] args){
         printPrimeFactors(9);
     }

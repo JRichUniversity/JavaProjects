@@ -1,7 +1,7 @@
 package Blatt4P;
 
 public class CountingNumbers {
-
+    //Git
     public static void main(String[] args){
         System.out.println("Zahlen ausgegeben: " + count(5, 100, 6));
     }
