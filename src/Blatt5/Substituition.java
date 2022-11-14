@@ -20,6 +20,11 @@ public class Substituition {
         }
     }
 
+    /**
+     * Encrypts a given char if char is contained in key
+     * @param c Char to be decrypted
+     * @return Decrypted char
+     */
     public static char crypt(char c){
         c = charToUpper(c);
         if(encryptionTable[0].indexOf(c) != -1){
@@ -27,6 +32,11 @@ public class Substituition {
         } else return c;
     }
 
+    /**
+     * Decrypts a given char if char is contained in key
+     * @param c Char to be decrypted
+     * @return Decrypted char
+     */
     public static char decrypt(char c){
         c = charToUpper(c);
         int pos = encryptionTable[1].indexOf(c);
@@ -35,6 +45,11 @@ public class Substituition {
         } else return c;
     }
 
+    /**
+     * Encrypts a given text
+     * @param txt Text to be decrypted
+     * @return Decrypted text
+     */
     public static String[] cryptText(String[] txt){
         for(int i = 0;i < txt.length;i++){
             StringBuilder str = new StringBuilder();
@@ -47,6 +62,11 @@ public class Substituition {
         return txt;
     }
 
+    /**
+     * Decrypts a given text
+     * @param txt Text to be decrypted
+     * @return Decrypted text
+     */
     public static String[] decryptText(String[] txt){
         for(int i = 0;i < txt.length;i++){
             StringBuilder str = new StringBuilder();
@@ -59,12 +79,22 @@ public class Substituition {
         return txt;
     }
 
+    /**
+     * Transforms a char to upper case
+     * @param c Char to be transformed
+     * @return Char in its uppercase
+     */
     public static char charToUpper(char c){
         StringBuilder str = new StringBuilder();
         str.append(c);
         return str.toString().toUpperCase().charAt(0);
     }
 
+    /**
+     * Opens and reads a file
+     * @param path Path of the file to be read
+     * @return Array of each line contained in the text
+     */
     public static String[] readFile(String path){
         int size = getFileSize(path);
         fileReadOpen(path);
@@ -75,6 +105,11 @@ public class Substituition {
         return text;
     }
 
+    /**
+     * Gives back the amount of lines in a given document
+     * @param path Path to be opened and read
+     * @return Amount of lines in document
+     */
     private static int getFileSize(String path){
         fileReadOpen(path);
         int lineCount = 0;
@@ -86,6 +121,15 @@ public class Substituition {
         return lineCount;
     }
 
+
+    /**
+     * Converts key which matched with most common characters to a format like:
+     * "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+     * "QWERTZUIOPASDFGHJKLMNBVCXY"
+     * @param transform Gernerated Key
+     * @param order Most common chars
+     * @return Sorted Key
+     */
     public static String finalKey(String transform, String order){
         StringBuilder str = new StringBuilder();
         char[] alphabet = Alphabet.toCharArray();
@@ -97,6 +141,11 @@ public class Substituition {
         return str.toString();
     }
 
+    /**
+     * Sorts the int[] with most chars from most to the least chars
+     * @param array Array with the values of the counted chars for each letter
+     * @return Sorted Key with the most used letter first and the least used letter last
+     */
     public static String genKey(int[] array) {
         char[] newAlphabet = charAlphabet;
         int tempInt;
@@ -121,6 +170,11 @@ public class Substituition {
         return str.toString();
     }
 
+    /**
+     * Counts the amount of chars for each letter.
+     * @param path Path of the file
+     * @return Array with the amount of chars for each letter arr[2]==5 => C:5
+     */
     public static int[] charsInText(String path){
         int[] arr = emptyArray(encryptionTable[0].length());
         String[] text = readFile(path);
@@ -133,6 +187,12 @@ public class Substituition {
         return arr;
     }
 
+    /**
+     * Gives back the amount of times a char is used in a String
+     * @param txt String to check
+     * @param c Char to count
+     * @return Amount of times the char is used in the String
+     */
     public static int charCount(String txt, char c) {
         int count = 0;
         for(char m : txt.toCharArray()){
@@ -141,6 +201,11 @@ public class Substituition {
         return count;
     }
 
+    /**
+     * Returns the position of a char in a given String
+     * @param c Char to be checked
+     * @return Postion of given char
+     */
     public static int returnCharPos(char c){
         StringBuilder str = new StringBuilder();
         str.append(c);
@@ -149,6 +214,11 @@ public class Substituition {
         return alphabet.indexOf(c);
     }
 
+    /**
+     * Creates an empty int[size] array with default values 0
+     * @param size Size of the array
+     * @return Array with default values 0 and given size
+     */
     public static int[] emptyArray(int size){
         int[] arr = new int[size];
         for(int i : arr){
@@ -157,6 +227,10 @@ public class Substituition {
         return arr;
     }
 
+    /**
+     * Prints a given int[] array
+     * @param arr Array to be printed in console
+     */
     public static void printArr(int[] arr){
         for(int i = 0; i < arr.length;i++){
             System.out.print(arr[i] + "\t");
