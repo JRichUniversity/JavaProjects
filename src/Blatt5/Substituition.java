@@ -121,6 +121,8 @@ public class Substituition {
         return lineCount;
     }
 
+    //Generating and decrypting key
+
 
     /**
      * Converts key which matched with most common characters to a format like:
