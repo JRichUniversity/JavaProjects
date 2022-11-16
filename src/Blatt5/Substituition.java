@@ -26,7 +26,7 @@ public class Substituition {
      * @return Decrypted char
      */
     public static char crypt(char c){
-        c = charToUpper(c);
+        c = charToUpper(c); //Umwandlung in Großbuchstaben
         if(encryptionTable[0].indexOf(c) != -1){
             return encryptionTable[1].charAt(encryptionTable[0].indexOf(c));
         } else return c;
