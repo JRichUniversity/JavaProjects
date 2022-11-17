@@ -11,12 +11,44 @@ public class Substituition {
     static String commonCharacters = "ENISRATDHULCGMOBWFKZPVJYXQ";
 
     public static void main(String[] args){
+        /*
         encryptionTable = readFile("src/Blatt5/Substitution.tab");
         String[] text = readFile("src/Blatt5/Geheim.txt");
 
         String[] newText = decryptText(text);
         for(String str : newText){
             System.out.println(str);
+        }
+         */
+        testJuliya();
+    }
+
+    public static void testJuliya(){
+        String path = readString("Bitte gib den Pfad der Datei an: ");
+        String[] text = readFile(path);
+        System.out.println("Bitte wähle aus was du machen möchtest:\n1.) Text verschlüsseln\n2.) Text entschlüsseln");
+        int a = readInt("Bitte gib deine gewünschte Auswahlmöglichkeit ein: ");
+        String key = readString("Bitte gib den Schlüssel zum ver-/entschlüsseln ein: ");
+        while(key.toCharArray().length != 26){
+            System.out.println("\nFEHLER: Schlüssel hat nicht die richtige länge!");
+            key = readString("Bitte gib den Schlüssel zum ver-/entschlüsseln ein: ");
+        }
+        encryptionTable = new String[2];
+        encryptionTable[0] = Alphabet;
+        encryptionTable[1] = key;
+        switch (a){
+            case 1:
+                text = cryptText(readFile(path));
+                for(String str : text){
+                    System.out.println(str);
+                }
+                break;
+            case 2:
+                text = decryptText(readFile(path));
+                for(String str : text){
+                    System.out.println(str);
+                }
+                break;
         }
     }
 
@@ -26,7 +58,7 @@ public class Substituition {
      * @return Decrypted char
      */
     public static char crypt(char c){
-        c = charToUpper(c);
+        c = charToUpper(c); //Umwandlung in Großbuchstaben
         if(encryptionTable[0].indexOf(c) != -1){
             return encryptionTable[1].charAt(encryptionTable[0].indexOf(c));
         } else return c;

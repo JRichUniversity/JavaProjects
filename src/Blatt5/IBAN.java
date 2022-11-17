@@ -14,6 +14,13 @@ public class IBAN {
         else System.out.println("IBAN OK");
 
         tests();
+
+        System.out.println(accountNrLenght(70090100, 1234567890));
+    }
+
+    public static int accountNrLenght(long blz, long kn){
+        char[] account = (""+ blz + kn).toCharArray();
+        return account.length;
     }
 
 
