@@ -5,6 +5,7 @@ public class drawL {
     public static void main(String[] args){
         printL(4, 5, 3);
         System.out.println("123456789");
+        //test();
     }
 
     public static void printL(int indent, int h, int l){

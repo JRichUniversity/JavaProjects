@@ -11,7 +11,7 @@ public class Substituition {
     static String commonCharacters = "ENISRATDHULCGMOBWFKZPVJYXQ";
 
     public static void main(String[] args){
-        /*
+
         encryptionTable = readFile("src/Blatt5/Substitution.tab");
         String[] text = readFile("src/Blatt5/Geheim.txt");
 
@@ -19,8 +19,8 @@ public class Substituition {
         for(String str : newText){
             System.out.println(str);
         }
-         */
-        testJuliya();
+
+        //testJuliya();
     }
 
     public static void testJuliya(){

@@ -24,6 +24,7 @@ public class taxes {
         System.out.println("Einkommensteuer für " + numP  + " mit Einkommen "+ income + "€ beträgt: " + Math.round(taxes * 100) / 100 + "€");
         */
         printEstTab(1000, 150000, 1000);
+        printTax(5000, 15000, 1000);
     }
 
 
@@ -61,6 +62,22 @@ public class taxes {
                 System.out.print("\t");
             }
             System.out.println("\t\t\t" + Math.round(2 * grossIncomeTax(i/2)));
+        }
+    }
+
+    public static void printTax(int min, int max, int inc){
+        for(int i = min; i <= max; i += inc){
+            if(i < 9408){
+                System.out.println("Est: 0");
+            }
+            else if(i>=9408 && i < 14907){
+
+                double y = ((double)i - 9409) / 10000;
+                System.out.println(y);
+            }
+            else if(i >= 14907 && i < 50000){
+                System.out.println("Typ 3");
+            }
         }
     }
 }

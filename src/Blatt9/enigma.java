@@ -13,12 +13,21 @@ public class enigma {
         walzen[0] = new walze(key1, 22);
         walzen[1] = new walze(key2, 0);
         walzen[2] = new walze(key3, 0);
-        cryptString();
+        String str = cryptString("Hello Gecko Morecho!?");
     }
 
-    static void cryptString(){
-        String txt = "Hello";
+    static String[] cryptText(String[] txt){
+        String[] result = new String[txt.length];
+        for(int i = 0; i < txt.length;i++){
+            result[i] = cryptString(txt[i]);
+        }
+        return result;
+    }
+
+    static String cryptString(String str){
+        String txt = str;
         txt = txt.toUpperCase();
+        txt = replace(txt);
         System.out.println(txt);
         StringBuilder result = new StringBuilder();
         char[] chars = txt.toCharArray();
@@ -30,7 +39,7 @@ public class enigma {
                 result.append('X');
             }
         }
-        System.out.println(result.toString());
+        return result.toString();
     }
 
     static char crypt(char c){

@@ -28,7 +28,7 @@ public class Squares {
             return true;
         }
         else if(hR2 >= hR1){
-            if((isBetween(topTest, top, bot) && isBetween(botTest, top, bot)) && (isBetween(left, leftTest, rightTest) || isBetween(right, leftTest, rightTest))){
+            if((isBetween(topTest, top, bot) && isBetween(botTest, top, bot)) && (isBetween(left, leftTest, rightTest) && isBetween(right, leftTest, rightTest))){
                 return true;
             }
             else return false;
