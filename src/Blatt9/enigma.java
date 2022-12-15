@@ -17,13 +17,20 @@ public class enigma {
     }
 
     static void cryptString(){
-        String hi = "HelloHelloHelloHello";
-        hi.toUpperCase();
-        String en = "";
-        for(char c : hi.toCharArray()){
-            en += crypt(c);
+        String txt = "Hello";
+        txt = txt.toUpperCase();
+        System.out.println(txt);
+        StringBuilder result = new StringBuilder();
+        char[] chars = txt.toCharArray();
+        for(char c : chars){
+            if(c >= 'A' && c <= 'Z'){
+                result.append(crypt(c));
+            }
+            else if (c == '!' || c == '.' || c == ',' || c == '?'){
+                result.append('X');
+            }
         }
-        System.out.println(en);
+        System.out.println(result.toString());
     }
 
     static char crypt(char c){
@@ -35,5 +42,22 @@ public class enigma {
             encrypt = walzen[indexWalze].getNextKey();
         }
         return encrypt;
+    }
+
+    static String replace(String str){
+        String new_str = "";
+        for(int i = 0; i < str.length();i++){
+            if(i < str.length()-2){
+                if(str.charAt(i) == 'C' && (str.charAt(i+1) == 'K' || str.charAt(i+1) == 'H')){
+                    new_str += "Q";
+                    i++;
+                }
+                else new_str += str.charAt(i);
+            }
+            else {
+                new_str += str.charAt(i);
+            }
+        }
+        return new_str;
     }
 }
