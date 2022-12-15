@@ -1,36 +1,29 @@
 package Blatt9;
 
 public class walze {
-    final static String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    String index;
     String key;
-    static int walzen = 0;
+    int counter = 0;
 
-    walze(String index, walze vorgänger){
-        this.index = index;
-        this.key = vorgänger.getKey();
+    walze(String key, int start){
+        this.key = format(key);
+        this.counter = start;
     }
 
-    walze(String key){
-        if(walzen == 0){
-            this.index = ALPHABET;
+
+    String format(String key){
+        String[] str = key.split(" ");
+        String new_str = "";
+        for(String s : str){
+            new_str += s;
         }
-        this.key = key;
+        return new_str;
     }
 
-    char crypt(char c){
-        if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-        {
-            if(c >= 'a' && c <= 'z'){
-                c = (char)('A'+(c-'a'));
-            }
-            return key.charAt(index.indexOf(c));
+    char getNextKey(){
+        if(counter < key.length()) return key.charAt(counter++);
+        else{
+            counter = 0;
+            return '-';
         }
-        return c;
-    }
-
-    String getKey(){
-        return this.key;
     }
 }
