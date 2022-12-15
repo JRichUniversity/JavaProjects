@@ -218,6 +218,7 @@ public class Substituition {
                 arr[returnCharPos(c)] += charCount(s, c);
             }
         }
+        String hallo = "hallo";
         return arr;
     }
 
